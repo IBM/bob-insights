@@ -1,5 +1,5 @@
 {
-  "name": "@bob-ai/insights-mcp",
+  "name": "@ibm/bob-insights-mcp",
   "version": "1.0.0",
   "description": "MCP server to get insights from your local Bob conversation history",
   "type": "module",
@@ -29,12 +29,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/bob-insights.git"
+    "url": "https://github.com/IBM/bob-insights.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/bob-insights/issues"
+    "url": "https://github.com/IBM/bob-insights/issues"
   },
-  "homepage": "https://github.com/yourusername/bob-insights#readme",
+  "homepage": "https://github.com/IBM/bob-insights#readme",
   "author": "Your Name",
   "license": "MIT",
   "engines": {
