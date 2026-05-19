@@ -4,21 +4,11 @@ This guide will walk you through installing and configuring the Bob Insights MCP
 
 ## Quick Start
 
-### Step 1: Build the Server
+### Method 1: Using npx (Recommended - No Installation!)
 
-From the repository root:
+The easiest way to use this MCP server is with `npx`. No installation or building required!
 
-```bash
-npm install
-npm run build
-```
-
-This will:
-- Install all dependencies
-- Compile TypeScript to JavaScript
-- Create the executable in `build/index.js`
-
-### Step 2: Configure Bob
+### Step 1: Configure Bob
 
 1. Open your Bob MCP settings file:
    - **Windows**: `C:\Users\<YourUsername>\.bob\settings\mcp_settings.json`
@@ -30,8 +20,8 @@ This will:
 {
   "mcpServers": {
     "bob-insights": {
-      "command": "node",
-      "args": ["C:/Users/GregoireCATTAN/Documents/bob-insights/build/index.js"],
+      "command": "npx",
+      "args": ["-y", "@bob-ai/insights-mcp"],
       "disabled": false,
       "alwaysAllow": [],
       "disabledTools": []
@@ -40,13 +30,11 @@ This will:
 }
 ```
 
-**Important**: Replace the path in `args` with the actual path to your `build/index.js` file.
-
-### Step 3: Restart Bob
+### Step 2: Restart Bob
 
 After saving the configuration file, restart Bob AI assistant for the changes to take effect.
 
-### Step 4: Verify Installation
+### Step 3: Verify Installation
 
 Ask Bob:
 ```
@@ -54,6 +42,68 @@ Can you list my recent conversations?
 ```
 
 If the server is working, Bob will use the `list_conversations` tool to show your conversation history with problem scores.
+
+---
+
+## Method 2: Global Installation via npm
+
+For faster startup times, install the package globally:
+
+### Step 1: Install
+
+```bash
+npm install -g @bob-ai/insights-mcp
+```
+
+### Step 2: Configure Bob
+
+```json
+{
+  "mcpServers": {
+    "bob-insights": {
+      "command": "bob-insights-mcp",
+      "disabled": false
+    }
+  }
+}
+```
+
+### Step 3: Restart Bob
+
+---
+
+## Method 3: Install from Source
+
+For development or customization:
+
+### Step 1: Clone and Build
+
+```bash
+git clone <repository-url>
+cd bob-insights
+npm install
+npm run build
+```
+
+### Step 2: Configure Bob
+
+```json
+{
+  "mcpServers": {
+    "bob-insights": {
+      "command": "node",
+      "args": ["/path/to/bob-insights/build/index.js"],
+      "disabled": false
+    }
+  }
+}
+```
+
+**Important**: Replace the path with the actual path to your `build/index.js` file.
+
+### Step 3: Restart Bob
+
+---
 
 ## Configuration Options
 

@@ -18,7 +18,48 @@ MCP server to get insights from your local Bob conversation history. This server
 - Node.js 18 or higher
 - Bob AI assistant installed with conversation history
 
-### Option 1: Install from Source
+### Option 1: Install via npx (Recommended)
+
+The easiest way to use this MCP server is with `npx` - no installation required!
+
+Simply configure Bob to use:
+
+```json
+{
+  "mcpServers": {
+    "bob-insights": {
+      "command": "npx",
+      "args": ["-y", "@bob-ai/insights-mcp"]
+    }
+  }
+}
+```
+
+This will automatically download and run the latest version each time.
+
+### Option 2: Install Globally via npm
+
+For faster startup times, install globally:
+
+```bash
+npm install -g @bob-ai/insights-mcp
+```
+
+Then configure Bob to use the installed command:
+
+```json
+{
+  "mcpServers": {
+    "bob-insights": {
+      "command": "bob-insights-mcp"
+    }
+  }
+}
+```
+
+### Option 3: Install from Source
+
+For development or customization:
 
 1. Clone this repository:
 ```bash
@@ -32,15 +73,17 @@ npm install
 npm run build
 ```
 
-3. The server will be built to `build/index.js`
-
-### Option 2: Install Globally
-
-```bash
-npm install -g .
+3. Configure Bob to use the local build:
+```json
+{
+  "mcpServers": {
+    "bob-insights": {
+      "command": "node",
+      "args": ["/path/to/bob-insights/build/index.js"]
+    }
+  }
+}
 ```
-
-This makes the `bob-insights-mcp` command available globally.
 
 ## Configuration
 
@@ -48,12 +91,14 @@ Add the MCP server to your Bob settings file at:
 - **Windows**: `C:\Users\<YourUsername>\.bob\settings\mcp_settings.json`
 - **macOS**: `~/.bob/settings/mcp_settings.json`
 
+**Using npx (Recommended - No installation needed):**
+
 ```json
 {
   "mcpServers": {
     "bob-insights": {
-      "command": "node",
-      "args": ["C:/Users/<YourUsername>/Documents/bob-insights/build/index.js"],
+      "command": "npx",
+      "args": ["-y", "@bob-ai/insights-mcp"],
       "disabled": false,
       "alwaysAllow": [],
       "disabledTools": []
@@ -62,7 +107,36 @@ Add the MCP server to your Bob settings file at:
 }
 ```
 
-**Note**: Adjust the path in `args` to match where you cloned/installed the repository.
+**Using global installation:**
+
+```json
+{
+  "mcpServers": {
+    "bob-insights": {
+      "command": "bob-insights-mcp",
+      "disabled": false,
+      "alwaysAllow": [],
+      "disabledTools": []
+    }
+  }
+}
+```
+
+**Using local source:**
+
+```json
+{
+  "mcpServers": {
+    "bob-insights": {
+      "command": "node",
+      "args": ["/path/to/bob-insights/build/index.js"],
+      "disabled": false,
+      "alwaysAllow": [],
+      "disabledTools": []
+    }
+  }
+}
+```
 
 ### Alternative: Claude Desktop Configuration
 
@@ -71,12 +145,26 @@ You can also use this server with Claude Desktop. Add to `claude_desktop_config.
 **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
 **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
 
+**Using npx (Recommended):**
+
 ```json
 {
   "mcpServers": {
     "bob-insights": {
-      "command": "node",
-      "args": ["/path/to/bob-insights/build/index.js"]
+      "command": "npx",
+      "args": ["-y", "@bob-ai/insights-mcp"]
+    }
+  }
+}
+```
+
+**Using global installation:**
+
+```json
+{
+  "mcpServers": {
+    "bob-insights": {
+      "command": "bob-insights-mcp"
     }
   }
 }
