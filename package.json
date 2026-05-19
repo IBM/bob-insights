@@ -1,0 +1,51 @@
+{
+  "name": "@ibm/bob-insights-mcp",
+  "version": "1.0.0",
+  "description": "MCP server to get insights from your local Bob conversation history",
+  "type": "module",
+  "main": "./build/index.js",
+  "bin": {
+    "bob-insights-mcp": "./build/index.js"
+  },
+  "files": [
+    "build",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
+    "prepare": "npm run build",
+    "watch": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "bob",
+    "bob-ai",
+    "conversation-analysis",
+    "insights",
+    "ai-assistant"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IBM/bob-insights.git"
+  },
+  "bugs": {
+    "url": "https://github.com/IBM/bob-insights/issues"
+  },
+  "homepage": "https://github.com/IBM/bob-insights#readme",
+  "author": "Your Name",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}
